@@ -1,0 +1,11 @@
+# The project website (docs/, GitHub Pages): built by scripts/build-site.py
+name = "darpana"
+sanskrit = "दर्पण"
+meaning = "the mirror"
+tagline = "Your phone, mirrored on the laptop: ekatva's window in Vyom. Calls, messages, files, Jyoti, the action log and pairing, a keystroke away."
+color = "blue"
+kind = "a Vyom tool"
+logo = "assets/logo.svg"
+shloka = "यथादर्शे तथात्मनि यथा स्वप्ने तथा पितृलोके ।\nयथाप्सु परीव ददृशे तथा गन्धर्वलोके छायातपयोरिव ब्रह्मलोके ॥"
+shloka_meaning = "As in a mirror, so in the self; as in a dream, so in the world of the fathers; as in water, so in the world of the Gandharvas; as light and shade, in the world of Brahmā."
+shloka_source = "Kaṭha Upaniṣad 2.3.5"

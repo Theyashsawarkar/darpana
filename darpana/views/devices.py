@@ -12,7 +12,9 @@ from ..widgets import L, button, card, clear, ellipsized, glyph, scroller
 from . import View
 
 RISK = [("low", "Low risk", "green"), ("medium", "Medium", "yellow"), ("high", "High", "red")]
-VERSE = ("यस्मिन्सर्वाणि भूतान्यात्मैवाभूद्विजानतः ।\nतत्र को मोहः कः शोक एकत्वमनुपश्यतः ॥")
+# Darpaṇa's own verse (Kaṭha Upaniṣad 2.3.5): its first line, "as in a
+# mirror, so in the self", is the one that names it.
+VERSE = ("यथादर्शे तथात्मनि यथा स्वप्ने तथा पितृलोके ।")
 
 
 class Devices(View):
@@ -38,7 +40,7 @@ class Devices(View):
         left.append(button("Pair a phone", lambda: self.pair(True), "soft", "plus"))
         verse = L(VERSE, "ek-verse", justify=Gtk.Justification.CENTER, wrap=True)
         left.append(verse)
-        left.append(L("Īśa Upaniṣad 7", "ek-verse-src"))
+        left.append(L("Kaṭha Upaniṣad 2.3.5", "ek-verse-src"))
         root.append(left)
         self.right = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, hexpand=True)
         root.append(self.right)

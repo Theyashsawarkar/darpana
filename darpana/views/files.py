@@ -13,7 +13,7 @@ import base64
 import os
 import time
 
-from gi.repository import Gdk, GLib, Gtk
+from gi.repository import Gdk, Gio, GLib, Gtk
 from vyom import Hint
 
 from ..widgets import L, button, clear, ellipsized, scroller, size
@@ -26,7 +26,9 @@ SHOW = 400            # items drawn in one folder, at most
 KINDS = {
     "dir": ("folder-symbolic", "accent"),
     "image": ("image-x-generic-symbolic", "green"),
-    "video": ("video-x-generic-symbolic", "peach"),
+    # Our own camera, facing right (the theme's faces left), as on every Vayu call.
+    "video": (os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+                           "assets", "icons", "video-call-symbolic.svg"), "peach"),
     "audio": ("audio-x-generic-symbolic", "mauve"),
     "archive": ("package-x-generic-symbolic", "yellow"),
     "doc": ("x-office-document-symbolic", "blue"),
@@ -79,8 +81,12 @@ def tile(name, meta, kind, on_click, picked=False):
     pv.set_size_request(40, 40)
     pv.add_css_class("ek-file-pv")
     pv.add_css_class(f"k-{color}")
-    img = Gtk.Image(icon_name="object-select-symbolic" if picked else icon, pixel_size=20,
-                    hexpand=True, halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER)
+    glyph_name = "object-select-symbolic" if picked else icon
+    img = Gtk.Image(pixel_size=20, hexpand=True, halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER)
+    if glyph_name.startswith("/"):      # our own drawing: a file, recoloured like the theme's (-symbolic)
+        img.set_from_gicon(Gio.FileIcon.new(Gio.File.new_for_path(glyph_name)))
+    else:
+        img.set_from_icon_name(glyph_name)
     pv.append(img)
     row.append(pv)
     text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, valign=Gtk.Align.CENTER, hexpand=True)

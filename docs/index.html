@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>darpana · Your phone, mirrored on the laptop: ekatva&#x27;s window in Vyom. Calls, messages, files, Jyoti, the action log and pairing, a keystroke away.</title>
+<meta name="description" content="Your phone, mirrored on the laptop: ekatva&#x27;s window in Vyom. Calls, messages, files, Jyoti, the action log and pairing, a keystroke away.">
+<meta property="og:title" content="darpana · Your phone, mirrored on the laptop: ekatva&#x27;s window in Vyom. Calls, messages, files, Jyoti, the action log and pairing, a keystroke away.">
+<meta property="og:description" content="Your phone, mirrored on the laptop: ekatva&#x27;s window in Vyom. Calls, messages, files, Jyoti, the action log and pairing, a keystroke away.">
+<meta name="theme-color" content="#11111b">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>:root{--accent:#89b4fa;--glow:#89b4fa33}</style>
+</head>
+<body>
+<header class="top"><div class="in">
+<a class="brand" href="index.html"><img src="assets/logo.svg" alt=""><span>darpana <small>दर्पण</small></span></a>
+<nav><a href="index.html" class="on">Overview</a><a href="changelog.html" class="">Changelog</a><a href="adr/index.html" class=" hide">Decisions</a><a class="gh" href="https://github.com/Theyashsawarkar/darpana">GitHub ↗</a></nav></div></header>
+<section class="hero"><div class="in"><div>
+<div class="eyebrow">a Vyom tool</div>
+<h1>darpana</h1>
+<div class="sa">दर्पण <span>· “the mirror”</span></div>
+<p class="lead">Your phone, mirrored on the laptop: ekatva&#x27;s window in Vyom. Calls, messages, files, Jyoti, the action log and pairing, a keystroke away.</p>
+<figure class="shloka"><p lang="sa">यथादर्शे तथात्मनि यथा स्वप्ने तथा पितृलोके ।<br>यथाप्सु परीव ददृशे तथा गन्धर्वलोके छायातपयोरिव ब्रह्मलोके ॥</p><figcaption>As in a mirror, so in the self; as in a dream, so in the world of the fathers; as in water, so in the world of the Gandharvas; as light and shade, in the world of Brahmā. <cite>Kaṭha Upaniṣad 2.3.5</cite></figcaption></figure>
+<div class="cta"><a class="btn primary" href="#install">Install</a><a class="btn" href="https://github.com/Theyashsawarkar/darpana">GitHub ↗</a>
+<a class="btn" href="changelog.html">What's new in v0.1.0</a></div>
+<div class="meta"><span><b>v0.1.0</b> latest</span><span><b>1</b> releases</span><span><b>0</b> decisions recorded</span><span><b>MIT</b> license</span></div>
+</div><img class="logo" src="assets/logo.svg" alt="darpana logo"></div></section>
+<div class="wrap"><aside class="toc"><b>On this page</b><a class="l2" href="#install">Install</a><a class="l2" href="#keys">Keys</a></aside><article>
+<h1 id="darpaṇa"><a class="anchor" href="#darpaṇa">#</a>Darpaṇa</h1>
+<p align="center">
+  <img alt="Darpaṇa: the phone at a glance (battery, link, ring, lock), Jyoti with its lamp, light and dark, the phone's clipboard, the last messages and calls" src="assets/screenshots/home.png" width="100%">
+</p>
+<p align="center">
+  <img alt="Messages: the phone's conversations with search, one open, a box to text from the phone" src="assets/screenshots/messages.png" width="49%">
+  <img alt="Calls: the call history with search and a dialer" src="assets/screenshots/calls.png" width="49%">
+</p>
+<p align="center">
+  <img alt="Files: the phone's folders and files as cards, sending files to it" src="assets/screenshots/files.png" width="70%">
+</p>
+<p align="center"><sub>Screenshots use made-up demo data (<code>scripts/demo-service.py</code>).</sub></p>
+<blockquote><p><em>Darpaṇa</em> (दर्पण) is Sanskrit for "the mirror": your phone, mirrored on the laptop.</p></blockquote>
+<p>It's the laptop's side of <a href="https://github.com/Theyashsawarkar/ekatva">ekatva</a> (एकत्व, "oneness": the phone and the laptop as one device), as a <a href="https://github.com/Theyashsawarkar/vyom">Vyom</a> popup. It opens at once: Vyom is already running, and the popup shows what it knew last while fresh state loads.</p>
+<ul><li><strong>Overview</strong>: the phone (battery, how it's linked; ring, lock, keep awake, send a file, dial), jyoti, keeping the laptop awake (Śānta, at rest; Akhaṇḍa, the diya; Nandādīpa, the samai, even with the lid closed), light and dark for both (the lamp), the phone's clipboard, the last messages and calls.</li><li><strong>Messages</strong>: the phone's conversations, one open beside them, text from the phone.</li><li><strong>Calls</strong>: the call history and a dialer; an incoming call shows at the top of every place, with Answer and Decline, and a call in progress with its timer and Hang up.</li><li><strong>Files</strong>: the phone's folders; drop files on the popup (or pick them) to send them to its Download/ekatva.</li><li><strong>Log</strong>: this laptop's action log (or the copy of the phone's), whether the chain checks out, and Undo.</li><li><strong>Devices</strong>: the paired phones, what each may do here (switches grouped by risk), unpairing, and pairing a new phone (a QR code, then four emoji).</li></ul>
+<p>It talks to ekatva's own service over its local socket (<code>$XDG_RUNTIME_DIR/ekatva.sock</code>, or <code>$EKATVA_SOCKET</code>), with nothing beyond Python's standard library. Reading the phone's messages, calls and clipboard is written to the phone's log, so they're read when you go to them, not every time the popup opens.</p>
+<h2 id="install"><a class="anchor" href="#install">#</a>Install</h2>
+<pre class="code" data-lang="sh"><code>kosha install darpana            # or clone into ~/.local/share/vyom/plugins/darpana
+systemctl --user restart vyom
+vyom darpana            # or: vyom darpana calls | messages | files | log | devices | pair</code></pre>
+<p><code>ekatva window</code> opens it too (and the pairing notification does).</p>
+<h2 id="keys"><a class="anchor" href="#keys">#</a>Keys</h2>
+<!-- KEYS (generated by scripts/keybinds.py from darpana/vim.py) -->
+<p>Vyom's vim keys work too: <code>?</code> and <code>Space ?</code> list every key, <code>Space Space</code> is the palette, <code>q</code> closes, <code>Esc</code> steps back, <code>Space u f</code> is fullscreen, <code>Space r</code> refreshes; on a card <code>j</code> / <code>k</code> move between controls, <code>h</code> / <code>l</code> change the focused one and <code>Enter</code> presses it.</p>
+<p><strong>Leader (Space)</strong></p>
+<div class="table"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td><code>Space j s</code></td><td>Set jyoti Śānta (the laptop sleeps and locks as usual)</td></tr><tr><td><code>Space j a</code></td><td>Set jyoti Akhaṇḍa (keep the laptop awake: no lock, no sleep until the lid shuts)</td></tr><tr><td><code>Space j n</code></td><td>Set jyoti Nandādīpa (keep the laptop awake, even with the lid closed)</td></tr><tr><td><code>Space p r</code></td><td>Toggle phone ring (find it: full volume until pressed again)</td></tr><tr><td><code>Space p l</code></td><td>Lock the phone</td></tr><tr><td><code>Space p k</code></td><td>Toggle the phone's screen staying on</td></tr><tr><td><code>Space p a</code></td><td>Answer the phone's incoming call</td></tr><tr><td><code>Space p h</code></td><td>Hang up the phone's call (or decline it)</td></tr><tr><td><code>Space p d</code></td><td>Dial a number from the phone (the Calls place)</td></tr><tr><td><code>Space l l</code></td><td>Toggle the laptop's light / dark mode</td></tr><tr><td><code>Space l p</code></td><td>Toggle the phone's light / dark mode</td></tr><tr><td><code>Space l b</code></td><td>Switch both to light or dark (the lamp)</td></tr><tr><td><code>Space g o</code></td><td>Go to home (the phone at a glance)</td></tr><tr><td><code>Space g m</code></td><td>Go to the phone's messages</td></tr><tr><td><code>Space g c</code></td><td>Go to the phone's calls</td></tr><tr><td><code>Space g f</code></td><td>Go to the phone's files</td></tr><tr><td><code>Space g l</code></td><td>Go to the action log</td></tr><tr><td><code>Space g d</code></td><td>Go to the paired devices and their permissions</td></tr><tr><td><code>Space y c</code></td><td>Copy the phone's clipboard to this laptop's</td></tr><tr><td><code>Space y p</code></td><td>Copy this laptop's clipboard to the phone</td></tr><tr><td><code>Space a p</code></td><td>Add a phone (shows the pairing code; works from any network)</td></tr><tr><td><code>Space a f</code></td><td>Add a file to the phone (send it to Download/ekatva)</td></tr><tr><td><code>Space s</code></td><td>Search messages or calls by name or number</td></tr><tr><td><code>Space r</code></td><td>Reload what this place shows</td></tr></tbody></table></div>
+<!-- END KEYS -->
+</article></div>
+<footer><div class="in"><div><h4>Desktop</h4><a href="https://theyashsawarkar.github.io/vayu/" class="">vayu <span>वायु · the keyboard-driven Wayland desktop</span></a></div><div><h4>Apps</h4><a href="https://theyashsawarkar.github.io/kosha/" class="">kosha <span>कोश · package manager</span></a><a href="https://theyashsawarkar.github.io/nada/" class="">nada <span>नाद · music player</span></a><a href="https://theyashsawarkar.github.io/drishya/" class="">drishya <span>दृश्य · video player</span></a><a href="https://theyashsawarkar.github.io/sangam/" class="">sangam <span>संगम · pull requests in the terminal</span></a><a href="https://theyashsawarkar.github.io/narada/" class="">narada <span>नारद · mail and chat in the terminal</span></a><a href="https://theyashsawarkar.github.io/pattan/" class="">pattan <span>पत्तन · ports and tunnels</span></a><a href="https://theyashsawarkar.github.io/nauka/" class="">nauka <span>नौका · Docker in the terminal</span></a><a href="https://theyashsawarkar.github.io/vaikhari/" class="">vaikhari <span>वैखरी · posts to X and LinkedIn</span></a><a href="https://theyashsawarkar.github.io/dvarapala/" class="">dvarapala <span>द्वारपाल · commands for AI agents, approved</span></a><a href="https://theyashsawarkar.github.io/pramana/" class="">pramana <span>प्रमाण · password prompts</span></a><a href="https://theyashsawarkar.github.io/vesha/" class="">vesha <span>वेष · Claude Code accounts</span></a><a href="https://theyashsawarkar.github.io/vishvakarma/" class="">vishvakarma <span>विश्वकर्मा · skills for every AI agent</span></a><a href="https://theyashsawarkar.github.io/ekatva/" class="">ekatva <span>एकत्व · phone and laptop, linked</span></a><a href="https://theyashsawarkar.github.io/varna/" class="">varna <span>वर्ण · theme engine</span></a><a href="https://theyashsawarkar.github.io/vinyasa/" class="">vinyasa <span>विन्यास · settings</span></a></div><div><h4>Vyom</h4><a href="https://theyashsawarkar.github.io/vyom/" class="">vyom <span>व्योम · panels runtime</span></a></div><div><h4>Vyom tools</h4><a href="https://theyashsawarkar.github.io/dvara/" class="">dvara <span>द्वार · apps</span></a><a href="https://theyashsawarkar.github.io/ganit/" class="">ganit <span>गणित · calculator</span></a><a href="https://theyashsawarkar.github.io/smriti/" class="">smriti <span>स्मृति · clipboard</span></a><a href="https://theyashsawarkar.github.io/bhava/" class="">bhava <span>भाव · emoji</span></a><a href="https://theyashsawarkar.github.io/tarang/" class="">tarang <span>तरंग · Wi‑Fi</span></a><a href="https://theyashsawarkar.github.io/setu/" class="">setu <span>सेतु · Bluetooth</span></a><a href="https://theyashsawarkar.github.io/doot/" class="">doot <span>दूत · phone</span></a><a href="https://theyashsawarkar.github.io/patra/" class="">patra <span>पात्र · Docker</span></a><a href="https://theyashsawarkar.github.io/akashvani/" class="">akashvani <span>आकाशवाणी · notifications</span></a><a href="https://theyashsawarkar.github.io/raga/" class="">raga <span>राग · YouTube</span></a><a href="https://theyashsawarkar.github.io/mudra/" class="">mudra <span>मुद्रा · keybindings</span></a><a href="https://theyashsawarkar.github.io/urja/" class="">urja <span>ऊर्जा · battery</span></a><a href="https://theyashsawarkar.github.io/vishram/" class="">vishram <span>विश्राम · power menu</span></a><a href="https://theyashsawarkar.github.io/kendra/" class="">kendra <span>केन्द्र · quick settings</span></a></div></div>
+<div class="bottom">darpana is free software under the MIT license · <a href="https://github.com/Theyashsawarkar/darpana">source</a> · <a href="https://github.com/Theyashsawarkar/darpana/issues">issues</a> · <a href="changelog.html">changelog</a> · part of <a href="https://theyashsawarkar.github.io/vayu/">Vayu</a></div></footer>
+<script>
+document.querySelectorAll('pre.code').forEach(p=>{const b=document.createElement('button');b.className='copy';b.textContent='Copy';
+b.onclick=()=>{navigator.clipboard.writeText(p.innerText.replace(/^Copy/,'')).then(()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1200)})};p.appendChild(b)});
+const links=[...document.querySelectorAll('.toc a')];if(links.length){const hs=links.map(a=>document.getElementById(a.hash.slice(1))).filter(Boolean);
+const on=()=>{let cur=hs[0];for(const h of hs){if(h.getBoundingClientRect().top<120)cur=h}links.forEach(a=>a.classList.toggle('on',cur&&a.hash==='#'+cur.id))};
+addEventListener('scroll',on,{passive:true});on()}
+</script>
+</body>
+</html>

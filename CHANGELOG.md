@@ -1,7 +1,10 @@
 # Changelog
 
-## Unreleased
+## v0.1.0 -- 2026-11-17
 
+- **Darpaṇa** (दर्पण, the mirror): the name (it was ekatva-vyom), its logo (a hand mirror) and its verse (Kaṭha Upaniṣad 2.3.5), on its screen (Devices), README and website. `vyom darpana`; config `[plugin.darpana]`.
+- A website with screenshots, taken from `scripts/demo-service.py`: a stand-in for ekatva's service with a made-up phone, people, messages, calls and files.
+- Files: a video's icon is the camera facing right, as on every Vayu call.
 - A WhatsApp (or other app's) call shows in the call banner too: "On a WhatsApp call" (or video call), and Hang up ends it with the app's own button.
 - **Files, redone.** Cards with a coloured tile for each kind (folders, images, video, audio, documents, archives, apps), the name, size and date; the path at the top is clickable anywhere along it (the Up button is gone; Esc still goes up).
 - **Sending files has its own picker, inside the popup** (no system dialog): this laptop's places (Home, Downloads, Documents, Pictures…), its folders, tick the files, one Send with their count and size. Dropping files on the page still sends them.

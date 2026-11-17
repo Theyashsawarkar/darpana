@@ -1,0 +1,230 @@
+{
+ "capabilities": {
+  "status": {
+   "side": "laptop",
+   "risk": "low",
+   "title": "See the laptop's state",
+   "detail": "battery, CPU, what's playing, what's waiting"
+  },
+  "agents": {
+   "side": "laptop",
+   "risk": "high",
+   "title": "Use your AI agents",
+   "detail": "see sessions, answer their questions, reply, interrupt"
+  },
+  "agents.start": {
+   "side": "laptop",
+   "risk": "high",
+   "title": "Start agent sessions",
+   "detail": "a new Claude session in one of your projects"
+  },
+  "files": {
+   "side": "laptop",
+   "risk": "high",
+   "title": "Your files",
+   "detail": "browse, read, create, change, move and delete (undoable)"
+  },
+  "files.private": {
+   "side": "laptop",
+   "risk": "critical",
+   "title": "Private files too",
+   "detail": "~/.ssh, ~/.gnupg, keyrings, ekatva's own keys"
+  },
+  "media": {
+   "side": "laptop",
+   "risk": "low",
+   "title": "Media, volume, brightness",
+   "detail": "nāda, drishya and any player"
+  },
+  "power": {
+   "side": "laptop",
+   "risk": "medium",
+   "title": "Lock, sleep, jyoti",
+   "detail": "keeping it awake, even with the lid closed"
+  },
+  "clipboard": {
+   "side": "laptop",
+   "risk": "medium",
+   "title": "The clipboard",
+   "detail": "read and set it"
+  },
+  "appearance": {
+   "side": "laptop",
+   "risk": "low",
+   "title": "Light and dark",
+   "detail": "switch the laptop between light and dark mode"
+  },
+  "input": {
+   "side": "laptop",
+   "risk": "high",
+   "title": "Keyboard and pointer",
+   "detail": "type and click on the laptop"
+  },
+  "screen": {
+   "side": "laptop",
+   "risk": "high",
+   "title": "See the screen",
+   "detail": "the laptop's screen, live"
+  },
+  "notifications": {
+   "side": "laptop",
+   "risk": "low",
+   "title": "Notifications",
+   "detail": "see and dismiss the laptop's"
+  },
+  "terminal": {
+   "side": "laptop",
+   "risk": "critical",
+   "title": "A terminal on the laptop",
+   "detail": "a shell as you, in your tmux sessions"
+  },
+  "share": {
+   "side": "laptop",
+   "risk": "medium",
+   "title": "Send files and links",
+   "detail": "files land in ~/Downloads, links open in the browser, text on the clipboard"
+  },
+  "root": {
+   "side": "laptop",
+   "risk": "critical",
+   "title": "Approve root",
+   "detail": "dvarapala and polkit prompts, with your password typed on the phone"
+  },
+  "journal": {
+   "side": "laptop",
+   "risk": "medium",
+   "title": "The action log",
+   "detail": "read it and undo actions"
+  },
+  "admin": {
+   "side": "laptop",
+   "risk": "critical",
+   "title": "Manage ekatva",
+   "detail": "pair, unpair, change what devices may do"
+  },
+  "phone.status": {
+   "side": "phone",
+   "risk": "low",
+   "title": "See the phone's state",
+   "detail": "battery, signal"
+  },
+  "phone.calls": {
+   "side": "phone",
+   "risk": "high",
+   "title": "Calls",
+   "detail": "place, answer and end calls"
+  },
+  "phone.sms": {
+   "side": "phone",
+   "risk": "high",
+   "title": "Messages",
+   "detail": "read and send SMS"
+  },
+  "phone.notifications": {
+   "side": "phone",
+   "risk": "medium",
+   "title": "Notifications",
+   "detail": "mirror them and use their actions"
+  },
+  "phone.files": {
+   "side": "phone",
+   "risk": "high",
+   "title": "The phone's files",
+   "detail": "browse, read, create, change, move and delete (undoable)"
+  },
+  "phone.lock": {
+   "side": "phone",
+   "risk": "low",
+   "title": "Lock and ring",
+   "detail": "lock the phone, ring it, keep its screen on"
+  },
+  "phone.appearance": {
+   "side": "phone",
+   "risk": "low",
+   "title": "The phone's light and dark",
+   "detail": "switch the phone between light and dark mode"
+  },
+  "phone.clipboard": {
+   "side": "phone",
+   "risk": "medium",
+   "title": "The phone's clipboard",
+   "detail": "read and set it"
+  },
+  "phone.share": {
+   "side": "phone",
+   "risk": "medium",
+   "title": "Send files and links to the phone",
+   "detail": "files land in Download/ekatva, links open, text on the clipboard"
+  },
+  "phone.journal": {
+   "side": "phone",
+   "risk": "medium",
+   "title": "The phone's action log",
+   "detail": "read it and undo actions"
+  }
+ },
+ "presets": {
+  "everything": [
+   "status",
+   "agents",
+   "agents.start",
+   "files",
+   "files.private",
+   "media",
+   "power",
+   "clipboard",
+   "appearance",
+   "input",
+   "screen",
+   "notifications",
+   "terminal",
+   "share",
+   "root",
+   "journal",
+   "phone.status",
+   "phone.calls",
+   "phone.sms",
+   "phone.notifications",
+   "phone.files",
+   "phone.lock",
+   "phone.appearance",
+   "phone.clipboard",
+   "phone.share",
+   "phone.journal"
+  ],
+  "everything-but-root": [
+   "status",
+   "agents",
+   "agents.start",
+   "files",
+   "media",
+   "power",
+   "clipboard",
+   "appearance",
+   "input",
+   "screen",
+   "notifications",
+   "terminal",
+   "share",
+   "journal",
+   "phone.status",
+   "phone.calls",
+   "phone.sms",
+   "phone.notifications",
+   "phone.files",
+   "phone.lock",
+   "phone.appearance",
+   "phone.clipboard",
+   "phone.share",
+   "phone.journal"
+  ],
+  "media-and-notifications": [
+   "status",
+   "media",
+   "notifications",
+   "phone.status",
+   "phone.notifications",
+   "phone.lock"
+  ]
+ }
+}

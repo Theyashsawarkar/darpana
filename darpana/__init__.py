@@ -1,5 +1,6 @@
-"""ekatva (एकत्व, "oneness"): the phone and this laptop as one device, in a
-Vyom popup.
+"""Darpaṇa (दर्पण, "the mirror"): the phone, mirrored on this laptop, in a
+Vyom popup. ekatva's window (ekatva, एकत्व, "oneness": the phone and this
+laptop as one device).
 
 The laptop's side of ekatva (github.com/Theyashsawarkar/ekatva): the phone at
 a glance, jyoti (keeping the laptop awake), light and dark, the phone's clipboard, its messages,
@@ -22,31 +23,31 @@ from .views import messages as messages_view
 from .views import overview as overview_view
 from .widgets import G, L, avatar, button, clear
 
-# KEYBINDS (generated from ekatva/vim.py by scripts/keybinds.py; don't edit by hand)
-# keybind: Vyom/ekatva leader:normal | Space j s | Set jyoti Śānta (the laptop sleeps and locks as usual)
-# keybind: Vyom/ekatva leader:normal | Space j a | Set jyoti Akhaṇḍa (keep the laptop awake: no lock, no sleep until the lid shuts)
-# keybind: Vyom/ekatva leader:normal | Space j n | Set jyoti Nandādīpa (keep the laptop awake, even with the lid closed)
-# keybind: Vyom/ekatva leader:normal | Space p r | Toggle phone ring (find it: full volume until pressed again)
-# keybind: Vyom/ekatva leader:normal | Space p l | Lock the phone
-# keybind: Vyom/ekatva leader:normal | Space p k | Toggle the phone's screen staying on
-# keybind: Vyom/ekatva leader:normal | Space p a | Answer the phone's incoming call
-# keybind: Vyom/ekatva leader:normal | Space p h | Hang up the phone's call (or decline it)
-# keybind: Vyom/ekatva leader:normal | Space p d | Dial a number from the phone (the Calls place)
-# keybind: Vyom/ekatva leader:normal | Space l l | Toggle the laptop's light / dark mode
-# keybind: Vyom/ekatva leader:normal | Space l p | Toggle the phone's light / dark mode
-# keybind: Vyom/ekatva leader:normal | Space l b | Switch both to light or dark (the lamp)
-# keybind: Vyom/ekatva leader:normal | Space g o | Go to home (the phone at a glance)
-# keybind: Vyom/ekatva leader:normal | Space g m | Go to the phone's messages
-# keybind: Vyom/ekatva leader:normal | Space g c | Go to the phone's calls
-# keybind: Vyom/ekatva leader:normal | Space g f | Go to the phone's files
-# keybind: Vyom/ekatva leader:normal | Space g l | Go to the action log
-# keybind: Vyom/ekatva leader:normal | Space g d | Go to the paired devices and their permissions
-# keybind: Vyom/ekatva leader:normal | Space y c | Copy the phone's clipboard to this laptop's
-# keybind: Vyom/ekatva leader:normal | Space y p | Copy this laptop's clipboard to the phone
-# keybind: Vyom/ekatva leader:normal | Space a p | Add a phone (shows the pairing code; works from any network)
-# keybind: Vyom/ekatva leader:normal | Space a f | Add a file to the phone (send it to Download/ekatva)
-# keybind: Vyom/ekatva leader:normal | Space s | Search messages or calls by name or number
-# keybind: Vyom/ekatva leader:normal | Space r | Reload what this place shows
+# KEYBINDS (generated from darpana/vim.py by scripts/keybinds.py; don't edit by hand)
+# keybind: Vyom/darpana leader:normal | Space j s | Set jyoti Śānta (the laptop sleeps and locks as usual)
+# keybind: Vyom/darpana leader:normal | Space j a | Set jyoti Akhaṇḍa (keep the laptop awake: no lock, no sleep until the lid shuts)
+# keybind: Vyom/darpana leader:normal | Space j n | Set jyoti Nandādīpa (keep the laptop awake, even with the lid closed)
+# keybind: Vyom/darpana leader:normal | Space p r | Toggle phone ring (find it: full volume until pressed again)
+# keybind: Vyom/darpana leader:normal | Space p l | Lock the phone
+# keybind: Vyom/darpana leader:normal | Space p k | Toggle the phone's screen staying on
+# keybind: Vyom/darpana leader:normal | Space p a | Answer the phone's incoming call
+# keybind: Vyom/darpana leader:normal | Space p h | Hang up the phone's call (or decline it)
+# keybind: Vyom/darpana leader:normal | Space p d | Dial a number from the phone (the Calls place)
+# keybind: Vyom/darpana leader:normal | Space l l | Toggle the laptop's light / dark mode
+# keybind: Vyom/darpana leader:normal | Space l p | Toggle the phone's light / dark mode
+# keybind: Vyom/darpana leader:normal | Space l b | Switch both to light or dark (the lamp)
+# keybind: Vyom/darpana leader:normal | Space g o | Go to home (the phone at a glance)
+# keybind: Vyom/darpana leader:normal | Space g m | Go to the phone's messages
+# keybind: Vyom/darpana leader:normal | Space g c | Go to the phone's calls
+# keybind: Vyom/darpana leader:normal | Space g f | Go to the phone's files
+# keybind: Vyom/darpana leader:normal | Space g l | Go to the action log
+# keybind: Vyom/darpana leader:normal | Space g d | Go to the paired devices and their permissions
+# keybind: Vyom/darpana leader:normal | Space y c | Copy the phone's clipboard to this laptop's
+# keybind: Vyom/darpana leader:normal | Space y p | Copy this laptop's clipboard to the phone
+# keybind: Vyom/darpana leader:normal | Space a p | Add a phone (shows the pairing code; works from any network)
+# keybind: Vyom/darpana leader:normal | Space a f | Add a file to the phone (send it to Download/ekatva)
+# keybind: Vyom/darpana leader:normal | Space s | Search messages or calls by name or number
+# keybind: Vyom/darpana leader:normal | Space r | Reload what this place shows
 # END KEYBINDS
 
 RPC = Client()   # one connection for as long as Vyom runs
@@ -58,7 +59,7 @@ VIEWS = {"over": overview_view.Overview, "msgs": messages_view.Messages, "calls"
 
 
 class Plugin(Base):
-    name, title, icon, color = "ekatva", "ekatva", G["phone"], "blue"
+    name, title, icon, color = "darpana", "Darpaṇa", G["phone"], "blue"
     layout = "card"
     width, height = 832, 560          # x Vyom's scale (1.25): 1040 x 700
     modal = True
@@ -139,7 +140,7 @@ class Plugin(Base):
         self.show_tab()
 
     def show_tab(self):
-        # The top bar's tab follows (a `vyom ekatva calls` opening, Space g c).
+        # The top bar's tab follows (a `vyom darpana calls` opening, Space g c).
         btn = getattr(self.panel, "tab_buttons", {}).get(self.tab) if self.panel else None
         if btn is not None and not btn.get_active() and not self.syncing:
             self.syncing = True
@@ -409,7 +410,7 @@ class Plugin(Base):
             util.notify("ekatva", text, icon="phone", app="ekatva")
 
     def turn_on(self):
-        """The service's switch ([plugin.ekatva] turn_on; Vayu's is ekatva-toggle.sh)."""
+        """ekatva's service switch ([plugin.darpana] turn_on; Vayu's is ekatva-toggle.sh)."""
         import subprocess
         cmd = self.conf.get("turn_on", "systemctl --user start ekatva.service")
 

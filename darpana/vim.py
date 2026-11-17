@@ -6,7 +6,7 @@ A card: NORMAL mode, and Vyom's card cursor moves through the controls
 leader: j jyoti (keeping the laptop awake), p the phone, l light and dark (this tool's nouns), and
 the shared groups: g go to, y copy, a add, r refresh.
 
-An action "verb:arg" runs Plugin.v_<verb>(count, arg) in ekatva/__init__.py.
+An action "verb:arg" runs Plugin.v_<verb>(count, arg) in darpana/__init__.py.
 """
 from vyom.keys import Bind
 
@@ -42,7 +42,7 @@ LEADER = [
     B(" r", "refresh", "Reload what this place shows"),
 ]
 
-SECTIONS = [("ekatva leader", "normal", "Leader (Space)", LEADER)]
+SECTIONS = [("darpana leader", "normal", "Leader (Space)", LEADER)]
 
 
 def keys(_tab):

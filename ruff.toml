@@ -1,3 +1,7 @@
 [lint]
 # A Vyom tool declares hints and tabs as class attributes (the plugin API).
 ignore = ["RUF012"]
+
+[lint.per-file-ignores]
+# The family's shared site builder, copied as is from the other Vayu tools.
+"scripts/build-site.py" = ["SIM115", "PLW1510", "RUF012", "UP031", "BLE001", "FURB167", "I001"]
