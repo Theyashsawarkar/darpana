@@ -1,0 +1,3 @@
+[lint]
+# A Vyom tool declares hints and tabs as class attributes (the plugin API).
+ignore = ["RUF012"]

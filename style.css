@@ -1,0 +1,340 @@
+/* ekatva: the phone and this laptop as one. Colours are the theme's
+   (Vyom's @accent, @green...; varna's vyom.css redefines them), except
+   jyoti's two (keeping the laptop awake), ekatva's own on the phone, in
+   waybar and here. */
+@define-color jyoti-akhanda #86aee0;
+@define-color jyoti-nanda #e58b52;
+
+.plugin-ekatva .ek { padding: 4px 16px 6px 16px; }
+.plugin-ekatva .ek-page { padding-top: 4px; }
+
+/* ---- cards ---- */
+.plugin-ekatva .ek-card {
+  border-radius: 20px; padding: 16px;
+  background-color: alpha(white, 0.035);
+  background-image: linear-gradient(to bottom, alpha(white, 0.035), alpha(white, 0) 40%);
+  border: 1px solid alpha(white, 0.07);
+  box-shadow: 0 10px 24px -16px alpha(black, 0.6);
+}
+.plugin-ekatva .ek-list-card { padding: 14px 10px 8px 10px; }
+.plugin-ekatva .ek-empty { color: @overlay1; font-size: 12.5px; padding: 8px 6px; }
+.plugin-ekatva .ek-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: @overlay1; }
+.plugin-ekatva .ek-big { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; }
+.plugin-ekatva .ek-says { font-size: 12.5px; color: @subtext0; }
+.plugin-ekatva .ek-section { font-size: 15px; font-weight: 700; margin: 4px 6px 2px 6px; }
+.plugin-ekatva .glyph { font-family: "JetBrainsMono Nerd Font"; }
+
+/* the title row of a card */
+.plugin-ekatva .ek-head { margin: 0 6px 6px 6px; }
+.plugin-ekatva .ek-head-ic {
+  min-width: 26px; min-height: 26px; border-radius: 9px; font-size: 14px;
+  background: alpha(white, 0.06); color: @accent;
+}
+.plugin-ekatva .ek-head-t { font-size: 15px; font-weight: 700; }
+.plugin-ekatva .ek-count { font-size: 11px; font-weight: 800; padding: 0 7px; border-radius: 99px; color: @crust; }
+.plugin-ekatva button.ek-link {
+  background: none; border: none; box-shadow: none; padding: 2px 6px; min-height: 0;
+  color: @accent; font-weight: 600; font-size: 12.5px; border-radius: 8px;
+}
+.plugin-ekatva button.ek-link:hover { background: alpha(@accent, 0.12); }
+
+.plugin-ekatva .ek-bg-green { background: @green; } .plugin-ekatva .ek-bg-yellow { background: @yellow; }
+.plugin-ekatva .ek-bg-red { background: @red; } .plugin-ekatva .ek-bg-accent { background: @accent; }
+
+/* ---- the phone (overview) ---- */
+.plugin-ekatva .ek-hero {
+  padding: 18px 20px;
+  background-image: radial-gradient(circle at 0% 0%, alpha(@green, 0.10), transparent 55%),
+                    radial-gradient(circle at 100% 100%, alpha(@blue, 0.10), transparent 55%);
+}
+.plugin-ekatva .ek-ring { color: @green; }
+.plugin-ekatva .ek-ring.t-yellow { color: @yellow; } .plugin-ekatva .ek-ring.t-red { color: @red; }
+.plugin-ekatva .ek-ring.t-gray { color: @overlay0; }
+.plugin-ekatva .ek-pct { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; font-feature-settings: "tnum"; }
+.plugin-ekatva .ek-bolt { color: @green; font-size: 13px; }
+.plugin-ekatva .ek-dot { min-width: 8px; min-height: 8px; border-radius: 99px; background: @overlay0; }
+.plugin-ekatva .ek-dot.ok { background: @green; box-shadow: 0 0 0 3px alpha(@green, 0.18); }
+.plugin-ekatva .ek-linkline { color: @blue; font-size: 12.5px; font-weight: 600; }
+.plugin-ekatva .ek-name { font-size: 25px; font-weight: 800; letter-spacing: -0.4px; }
+.plugin-ekatva .ek-sub { color: @subtext0; font-size: 13px; }
+.plugin-ekatva .ek-pill {
+  font-size: 12px; padding: 4px 10px; border-radius: 99px; color: @subtext1;
+  background: alpha(white, 0.05); border: 1px solid alpha(white, 0.07);
+}
+.plugin-ekatva .ek-pill-red { color: @red; border-color: alpha(@red, 0.4); background: alpha(@red, 0.10); }
+
+.plugin-ekatva button.ek-act {
+  min-width: 58px; min-height: 62px; padding: 0 2px; border-radius: 16px;
+  background: alpha(white, 0.05); border: 1px solid alpha(white, 0.08); box-shadow: none;
+}
+.plugin-ekatva button.ek-act:hover { background: alpha(white, 0.10); }
+.plugin-ekatva .ek-act-ic { color: @accent; font-size: 17px; }
+.plugin-ekatva .ek-act-t { color: @subtext0; font-size: 11.5px; font-weight: 500; }
+.plugin-ekatva button.ek-act.ringing { background: @red; border-color: transparent; }
+.plugin-ekatva button.ek-act.ringing .ek-act-ic, .plugin-ekatva button.ek-act.ringing .ek-act-t { color: @crust; }
+.plugin-ekatva button.ek-act.held { background: alpha(@jyoti-nanda, 0.16); border-color: alpha(@jyoti-nanda, 0.5); }
+.plugin-ekatva button.ek-act.held .ek-act-ic { color: @jyoti-nanda; }
+
+/* ---- the three tiles ---- */
+.plugin-ekatva .ek-tile { min-height: 168px; padding: 16px; }
+.plugin-ekatva .ek-chip-ic {
+  min-width: 26px; min-height: 26px; border-radius: 99px; font-size: 13px;
+  border: 1px solid alpha(white, 0.14); color: @subtext1;
+}
+.plugin-ekatva .ek-tile-label { font-size: 12.5px; font-weight: 700; color: @subtext1; }
+/* The lamp, the tile's focus (as on the phone): 120 px at the top right. */
+.plugin-ekatva .ek-jyoti-art { margin-right: 4px; }
+.plugin-ekatva .ek-jyoti-label { color: #cbbfd8; }
+.plugin-ekatva .ek-jyoti.lv-on .ek-jyoti-label { color: @jyoti-akhanda; }
+.plugin-ekatva .ek-jyoti.lv-high .ek-jyoti-label { color: @jyoti-nanda; }
+.plugin-ekatva .ek-jyoti.lv-off {
+  background-image: radial-gradient(circle at 100% 0%, alpha(#a091be, 0.22), transparent 62%);
+}
+
+.plugin-ekatva .ek-jyoti { transition: all 300ms ease; }
+.plugin-ekatva .ek-jyoti.lv-on {
+  background-image: radial-gradient(circle at 100% 0%, alpha(@jyoti-akhanda, 0.30), transparent 65%);
+  border-color: alpha(@jyoti-akhanda, 0.45);
+}
+.plugin-ekatva .ek-jyoti.lv-high {
+  background-image: radial-gradient(circle at 90% 110%, alpha(@jyoti-nanda, 0.42), transparent 65%);
+  border-color: alpha(@jyoti-nanda, 0.6); box-shadow: 0 14px 30px -18px alpha(@jyoti-nanda, 0.8);
+}
+.plugin-ekatva .ek-jyoti.lv-on .ek-big, .plugin-ekatva .ek-jyoti.lv-on .ek-tile-label { color: @jyoti-akhanda; }
+.plugin-ekatva .ek-jyoti.lv-high .ek-big, .plugin-ekatva .ek-jyoti.lv-high .ek-tile-label { color: @jyoti-nanda; }
+
+.plugin-ekatva .ek-seg { padding: 3px; border-radius: 12px; background: alpha(black, 0.22); border: 1px solid alpha(white, 0.06); }
+.plugin-ekatva button.ek-seg-b {
+  padding: 5px 0; min-height: 0; border-radius: 9px; background: none; border: none; box-shadow: none;
+  font-size: 12.5px; font-weight: 600; color: @subtext0;
+}
+.plugin-ekatva button.ek-seg-b:hover { color: @text; }
+.plugin-ekatva button.ek-seg-b.on { background: alpha(white, 0.10); color: @text; }
+.plugin-ekatva .ek-jyoti.lv-on button.ek-seg-b.on { background: @jyoti-akhanda; color: @crust; }
+.plugin-ekatva .ek-jyoti.lv-high button.ek-seg-b.on { background: @jyoti-nanda; color: @crust; }
+
+/* the lamp: lit in the theme's yellow */
+.plugin-ekatva button.ek-lamp { box-shadow: none; transition: all 400ms ease; }
+.plugin-ekatva button.ek-lamp:hover { border-color: alpha(white, 0.14); }
+.plugin-ekatva button.ek-lamp.lit {
+  background-image: radial-gradient(circle at 80% 0%, alpha(@yellow, 0.32), alpha(@yellow, 0.04) 55%, transparent 80%);
+  border-color: alpha(@yellow, 0.35);
+}
+.plugin-ekatva button.ek-lamp.lit .ek-big { color: @yellow; }
+.plugin-ekatva .ek-lamp-art { color: @yellow; }
+.plugin-ekatva .ek-mode-chip {
+  padding: 3px 9px; border-radius: 99px; font-size: 12px; font-weight: 600;
+  border: 1px solid alpha(white, 0.18); background: alpha(black, 0.18);
+}
+.plugin-ekatva .ek-mode-ic { color: @subtext0; }
+
+/* the phone's clipboard */
+.plugin-ekatva .ek-clip-q {
+  font-family: "JetBrainsMono Nerd Font"; font-size: 12px; padding: 8px 10px; border-radius: 11px;
+  background: alpha(black, 0.22); border: 1px solid alpha(white, 0.06);
+}
+
+/* ---- buttons ---- */
+.plugin-ekatva button.ek-btn {
+  padding: 7px 12px; min-height: 0; border-radius: 11px; font-weight: 600; font-size: 12.5px;
+  background: alpha(white, 0.06); border: 1px solid alpha(white, 0.08); box-shadow: none; color: @accent;
+}
+.plugin-ekatva button.ek-btn:hover { background: alpha(white, 0.11); }
+.plugin-ekatva button.ek-btn.accent { background: @accent; color: @crust; border-color: transparent; }
+.plugin-ekatva button.ek-btn.ok { background: @green; color: @crust; border-color: transparent; }
+.plugin-ekatva button.ek-btn.danger { background: @red; color: @crust; border-color: transparent; }
+.plugin-ekatva button.ek-btn.danger.soft { background: alpha(@red, 0.14); color: @red; border-color: alpha(@red, 0.4); }
+.plugin-ekatva button.ek-icon-btn {
+  min-width: 36px; min-height: 36px; padding: 0; border-radius: 11px; box-shadow: none;
+  background: alpha(white, 0.06); border: 1px solid alpha(white, 0.08); color: @accent;
+}
+.plugin-ekatva button.ek-icon-btn.call { background: @green; color: @crust; border-color: transparent; }
+.plugin-ekatva button.ek-filter {
+  padding: 4px 12px; min-height: 0; border-radius: 99px; font-size: 12.5px; font-weight: 600;
+  background: none; border: 1px solid alpha(white, 0.12); box-shadow: none; color: @subtext0;
+}
+.plugin-ekatva button.ek-filter.on { background: alpha(white, 0.10); color: @text; }
+
+/* ---- rows (messages, calls, devices) ---- */
+.plugin-ekatva button.ek-row {
+  padding: 7px 8px; min-height: 0; border-radius: 12px; background: none; border: none; box-shadow: none;
+}
+.plugin-ekatva button.ek-row:hover { background: alpha(white, 0.05); }
+.plugin-ekatva button.ek-row.on { background: alpha(white, 0.08); }
+.plugin-ekatva .ek-row-t { font-weight: 600; font-size: 13.5px; }
+.plugin-ekatva .ek-row-s { color: @overlay2; font-size: 12px; }
+.plugin-ekatva .ek-row-time { color: @overlay1; font-size: 11.5px; margin-top: 2px; }
+.plugin-ekatva .ek-av {
+  min-width: 34px; min-height: 34px; border-radius: 12px; font-weight: 800; font-size: 15px;
+  background: alpha(@accent, 0.16); color: @accent;
+}
+.plugin-ekatva .ek-dir {
+  min-width: 30px; min-height: 30px; border-radius: 10px; font-size: 15px; font-weight: 700;
+  border: 1px solid alpha(white, 0.12);
+}
+/* A call row calls back wherever you click it: the green call badge says so,
+   faint at rest and lit under the pointer or the cursor. */
+.plugin-ekatva .ek-back {
+  color: @green; font-size: 13px; min-width: 30px; min-height: 30px; border-radius: 999px;
+  background: alpha(@green, 0.08); opacity: 0.55;
+}
+.plugin-ekatva button.ek-row:hover .ek-back, .plugin-ekatva button.ek-row.vk-cursor .ek-back {
+  opacity: 1; background: alpha(@green, 0.18);
+}
+
+/* ---- the call banner ---- */
+.plugin-ekatva .ek-banner-holder { margin-bottom: 10px; }
+.plugin-ekatva .ek-banner {
+  padding: 12px 14px; border-radius: 20px; border: 1px solid alpha(@green, 0.45);
+  background-color: alpha(white, 0.035);
+  background-image: radial-gradient(circle at 0% 50%, alpha(@green, 0.22), transparent 60%);
+}
+.plugin-ekatva .ek-av-call { min-width: 44px; min-height: 44px; border-radius: 15px; font-size: 18px;
+  background: alpha(@green, 0.2); color: @green; }
+.plugin-ekatva .ek-banner.ringing .ek-av-call { animation: ek-pulse 1.4s ease-out infinite; }
+@keyframes ek-pulse { 0% { box-shadow: 0 0 0 0 alpha(@green, 0.6); } 100% { box-shadow: 0 0 0 12px alpha(@green, 0); } }
+.plugin-ekatva .ek-banner-t { font-size: 16px; font-weight: 700; }
+.plugin-ekatva .ek-banner-s { font-size: 12.5px; color: @green; }
+
+/* ---- messages ---- */
+.plugin-ekatva .ek-chat { padding: 0; }
+.plugin-ekatva .ek-chathead { padding: 12px 14px; border-bottom: 1px solid alpha(white, 0.06); }
+.plugin-ekatva .ek-chat-name { font-size: 15px; font-weight: 700; }
+.plugin-ekatva .ek-chat-num { font-size: 12px; color: @overlay1; }
+.plugin-ekatva .ek-bubbles { padding: 14px; }
+.plugin-ekatva .ek-day { font-size: 11.5px; color: @overlay1; margin: 6px 0; }
+.plugin-ekatva .ek-bubble { padding: 8px 12px; border-radius: 18px; }
+.plugin-ekatva .ek-bubble.them { background: alpha(white, 0.06); border-bottom-left-radius: 6px; }
+.plugin-ekatva .ek-bubble.me { background: alpha(@accent, 0.18); border-bottom-right-radius: 6px; }
+.plugin-ekatva .ek-bubble-t { font-size: 13.5px; }
+.plugin-ekatva .ek-bubble-time { font-size: 10.5px; color: @overlay1; }
+.plugin-ekatva .ek-composer { padding: 10px 12px; border-top: 1px solid alpha(white, 0.06); }
+.plugin-ekatva entry.ek-input, .plugin-ekatva entry.ek-number {
+  border-radius: 14px; padding: 6px 12px; min-height: 30px;
+  background: alpha(black, 0.22); border: 1px solid alpha(white, 0.10); box-shadow: none; color: @text;
+}
+/* One box, never two: GTK's own focus outline (drawn with a gap) is off, and
+   focus (or the card cursor) is the same box's border lit, with a soft glow. */
+.plugin-ekatva entry, .plugin-ekatva entry:focus, .plugin-ekatva entry:focus-within,
+.plugin-ekatva entry text, .plugin-ekatva entry text:focus { outline: none; outline-width: 0; }
+.plugin-ekatva entry.ek-input:focus-within, .plugin-ekatva entry.ek-number:focus-within,
+.plugin-ekatva entry.ek-input.vk-cursor, .plugin-ekatva entry.ek-number.vk-cursor {
+  border-color: alpha(@accent, 0.75); box-shadow: 0 0 14px alpha(@accent, 0.22);
+}
+/* Vyom marks the focused widget with its cursor ring; in a text box that's the
+   text inside it, which drew a second box within the first. The box's own
+   border lights instead (above). */
+.plugin-ekatva text.vk-cursor, .plugin-ekatva entry text.vk-cursor { box-shadow: none; outline: none; }
+.plugin-ekatva entry.ek-search { min-height: 32px; border-radius: 12px; padding: 4px 10px; }
+.plugin-ekatva entry.ek-search image { color: @overlay1; margin-right: 6px; }
+.plugin-ekatva button.ek-send {
+  min-width: 40px; min-height: 40px; padding: 0; border-radius: 13px; box-shadow: none; border: none;
+  background: @accent; color: @crust; font-size: 16px;
+}
+
+/* ---- calls ---- */
+.plugin-ekatva .ek-dialer { padding: 18px 18px 20px 18px; }
+.plugin-ekatva .ek-dialer .ek-eyebrow { margin-bottom: 8px; }
+.plugin-ekatva entry.ek-number { font-size: 22px; font-weight: 700; min-height: 44px; }
+.plugin-ekatva .ek-who { font-size: 12.5px; color: @green; min-height: 18px; margin-top: 4px; }
+.plugin-ekatva button.ek-key {
+  min-width: 62px; min-height: 62px; padding: 0; border-radius: 99px; box-shadow: none;
+  background: alpha(white, 0.05); border: 1px solid alpha(white, 0.07);
+}
+.plugin-ekatva button.ek-key:hover { background: alpha(white, 0.10); }
+.plugin-ekatva .ek-key-d { font-size: 21px; font-weight: 700; }
+.plugin-ekatva .ek-key-l { font-size: 8.5px; letter-spacing: 1.5px; color: @overlay1; font-weight: 700; }
+.plugin-ekatva button.ek-dial {
+  min-width: 62px; min-height: 62px; padding: 0; border-radius: 99px; border: none;
+  background: @green; color: @crust; font-size: 22px; box-shadow: 0 10px 24px -10px alpha(@green, 0.8);
+}
+
+/* ---- files ---- */
+/* The path: each part a button, the last (where you are) plain and bright. */
+.plugin-ekatva button.ek-crumb {
+  padding: 5px 9px; min-height: 0; border-radius: 10px; box-shadow: none; border: none;
+  background: none; color: @subtext0; font-size: 13.5px; font-weight: 600;
+}
+.plugin-ekatva button.ek-crumb:hover { background: alpha(white, 0.06); color: @text; }
+.plugin-ekatva .ek-crumb.here { padding: 5px 9px; color: @text; font-size: 13.5px; font-weight: 700; }
+.plugin-ekatva .ek-crumb-sep { color: @overlay0; font-size: 13px; }
+/* A card per thing: its kind's tile, its name, its size and date. */
+.plugin-ekatva button.ek-file {
+  padding: 9px 12px 9px 9px; border-radius: 16px; box-shadow: none;
+  background: alpha(white, 0.035); border: 1px solid alpha(white, 0.07);
+  transition: all 160ms ease;
+}
+.plugin-ekatva button.ek-file:hover { background: alpha(white, 0.06); border-color: alpha(white, 0.16); }
+.plugin-ekatva button.ek-file.picked { background: alpha(@accent, 0.12); border-color: alpha(@accent, 0.6); }
+.plugin-ekatva .ek-file-pv { min-width: 40px; min-height: 40px; border-radius: 12px; }
+.plugin-ekatva .ek-file-pv.k-accent  { color: @accent;   background: alpha(@accent, 0.14); }
+.plugin-ekatva .ek-file-pv.k-green   { color: @green;    background: alpha(@green, 0.14); }
+.plugin-ekatva .ek-file-pv.k-peach   { color: @peach;    background: alpha(@peach, 0.14); }
+.plugin-ekatva .ek-file-pv.k-mauve   { color: @mauve;    background: alpha(@mauve, 0.14); }
+.plugin-ekatva .ek-file-pv.k-yellow  { color: @yellow;   background: alpha(@yellow, 0.14); }
+.plugin-ekatva .ek-file-pv.k-blue    { color: @blue;     background: alpha(@blue, 0.14); }
+.plugin-ekatva .ek-file-pv.k-teal    { color: @teal;     background: alpha(@teal, 0.14); }
+.plugin-ekatva .ek-file-pv.k-overlay { color: @subtext0; background: alpha(white, 0.06); }
+.plugin-ekatva button.ek-file.picked .ek-file-pv { color: @crust; background: @accent; }
+.plugin-ekatva .ek-file-t { font-size: 13px; font-weight: 600; }
+.plugin-ekatva .ek-file-s { font-size: 11.5px; color: @overlay1; }
+.plugin-ekatva .ek-file-go { color: @overlay1; }
+.plugin-ekatva .ek-drop {
+  padding: 12px; border-radius: 16px; border: 1.5px dashed alpha(white, 0.14); color: @subtext0; font-size: 12.5px;
+}
+.plugin-ekatva .ek-drop.over { border-color: @accent; color: @accent; background: alpha(@accent, 0.08); }
+.plugin-ekatva flowbox.ek-files flowboxchild, .plugin-ekatva flowboxchild { padding: 0; background: none; }
+/* The picker: this laptop's files, inside the popup. */
+.plugin-ekatva .ek-pick-title { font-size: 17px; font-weight: 700; }
+.plugin-ekatva .ek-pick-sub { font-size: 12px; color: @overlay1; }
+.plugin-ekatva button.ek-place {
+  padding: 6px 12px; min-height: 0; border-radius: 999px; box-shadow: none;
+  background: alpha(white, 0.05); border: 1px solid alpha(white, 0.08); color: @subtext1; font-size: 12.5px;
+}
+.plugin-ekatva button.ek-place:hover { background: alpha(@accent, 0.12); border-color: alpha(@accent, 0.4); color: @text; }
+
+/* ---- log ---- */
+.plugin-ekatva .ek-chain { font-size: 12.5px; font-weight: 600; }
+.plugin-ekatva .ek-log-card { padding: 6px; }
+.plugin-ekatva .ek-entry { padding: 9px 10px; border-radius: 12px; }
+.plugin-ekatva .ek-entry:hover { background: alpha(white, 0.03); }
+.plugin-ekatva .ek-entry.undone { opacity: 0.5; }
+.plugin-ekatva .ek-seq { font-family: "JetBrainsMono Nerd Font"; font-size: 11px; color: @overlay1; min-width: 46px; }
+.plugin-ekatva .ek-entry-ic {
+  min-width: 30px; min-height: 30px; border-radius: 10px; font-size: 14px; border: 1px solid alpha(white, 0.12);
+}
+.plugin-ekatva button.ek-undo {
+  padding: 4px 11px; min-height: 0; border-radius: 99px; font-size: 12px; font-weight: 600;
+  background: none; border: 1px solid alpha(white, 0.14); box-shadow: none; color: @accent;
+}
+.plugin-ekatva button.ek-undo:hover { border-color: @accent; }
+
+/* ---- devices ---- */
+.plugin-ekatva .ek-devcard { padding: 14px; }
+.plugin-ekatva .ek-dev-ic {
+  min-width: 36px; min-height: 36px; border-radius: 12px; font-size: 18px; color: @blue; background: alpha(@blue, 0.12);
+}
+.plugin-ekatva .ek-kv-k { font-size: 12px; color: @overlay1; min-width: 56px; margin-left: 6px; }
+.plugin-ekatva .ek-kv-v { font-size: 12.5px; }
+.plugin-ekatva .ek-mono { font-family: "JetBrainsMono Nerd Font"; font-size: 11.5px; }
+.plugin-ekatva .ek-group { font-size: 12px; font-weight: 700; color: @overlay2; }
+.plugin-ekatva .ek-risk-dot { min-width: 7px; min-height: 7px; border-radius: 99px; margin-left: 8px; }
+.plugin-ekatva .ek-perm { padding: 8px 10px; border-radius: 12px; }
+.plugin-ekatva .ek-perm:hover { background: alpha(white, 0.03); }
+.plugin-ekatva .ek-verse { font-size: 12.5px; color: @subtext0; margin-top: 10px; }
+.plugin-ekatva .ek-verse-src { font-size: 10.5px; color: @overlay1; }
+.plugin-ekatva .ek-pair-t { font-size: 18px; font-weight: 800; }
+.plugin-ekatva .ek-qr { padding: 10px; border-radius: 16px; background: white; }
+.plugin-ekatva .ek-sas { font-size: 30px; margin: 6px 0; }
+.plugin-ekatva .ek-mode-chip.dim { opacity: 0.5; }
+.plugin-ekatva .ek-banner.off { border-color: alpha(@yellow, 0.5);
+  background-image: radial-gradient(circle at 0% 50%, alpha(@yellow, 0.18), transparent 60%); }
+.plugin-ekatva .ek-banner.off .ek-banner-s { color: @subtext0; }
+
+/* Where you are (Vyom's card cursor): my buttons drop GTK's shadow, so the ring is drawn here. */
+.plugin-ekatva button.vk-cursor, .plugin-ekatva switch.vk-cursor {
+  box-shadow: 0 0 0 2px @accent, 0 0 12px alpha(@accent, 0.35);
+}
+.plugin-ekatva button.ek-row.vk-cursor { background: alpha(@accent, 0.10); }
+/* Not possible right now (the phone isn't linked): it looks it. */
+.plugin-ekatva button:disabled { opacity: 0.4; }
