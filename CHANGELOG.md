@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- A WhatsApp (or other app's) call shows in the call banner too: "On a WhatsApp call" (or video call), and Hang up ends it with the app's own button.
 - **Files, redone.** Cards with a coloured tile for each kind (folders, images, video, audio, documents, archives, apps), the name, size and date; the path at the top is clickable anywhere along it (the Up button is gone; Esc still goes up).
 - **Sending files has its own picker, inside the popup** (no system dialog): this laptop's places (Home, Downloads, Documents, Pictures…), its folders, tick the files, one Send with their count and size. Dropping files on the page still sends them.
 - **Search in Messages and Calls**, by name or number (any part of it, e.g. the last digits): a box above each list, or `Space s`.

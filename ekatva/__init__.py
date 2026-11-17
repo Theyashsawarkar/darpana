@@ -348,7 +348,9 @@ class Plugin(Base):
         text.append(L(who, "ek-banner-t", xalign=0))
         if c["state"] == "ringing":
             box.add_css_class("ringing")
-            sub = f"Calling {short_name(c['name'])}" + (f" · {c['number']}" if c.get("contact") and c.get("number") else "")
+            kind = "video call" if c.get("video") else "call"
+            sub = (f"{c['app']} {kind} on {short_name(c['name'])}" if c.get("app") else
+                   f"Calling {short_name(c['name'])}" + (f" · {c['number']}" if c.get("contact") and c.get("number") else ""))
             text.append(L(sub, "ek-banner-s", xalign=0))
             box.append(text)
             box.append(button("Decline", lambda: self.phone_do("calls.hangUp", None, "Declined"), "danger soft"))
@@ -369,7 +371,9 @@ class Plugin(Base):
             self.call_id = None
             return False
         s = max(0, int(time.time() - c["since"] / 1000))
-        self.call_time.set_label(f"On a call on {short_name(c['name'])} · {s // 60}:{s % 60:02d}")
+        kind = "video call" if c.get("video") else "call"
+        on = f"On a {c['app']} {kind}" if c.get("app") else f"On a {kind}"
+        self.call_time.set_label(f"{on} on {short_name(c['name'])} · {s // 60}:{s % 60:02d}")
         return True
 
     # ------------------------------------------------------------ doing things
