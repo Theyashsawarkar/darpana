@@ -102,15 +102,15 @@ class Overview(View):
 
     # ------------------------------------------------------------ jyoti
     def build_jyoti(self):
-        # As on the phone: the level's lamp is the focus, large at the top right
-        # (the diya unlit, the diya, the samai), the words beneath it.
+        # As on the phone: the level's flame is the focus, large at the top right
+        # (the flame: at dusk, blue, bright red), the words beneath it.
         c = card(cls="ek-tile ek-jyoti", spacing=0)
         stage = Gtk.Overlay(vexpand=True)
         words = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         words.append(L("JYOTI", "ek-eyebrow", "ek-jyoti-label", xalign=0))
         words.append(Gtk.Box(vexpand=True))
         stage.set_child(words)
-        self.jyoti_art = JyotiLamp(120, "ek-jyoti-art", stroke=1.05, halign=Gtk.Align.END,
+        self.jyoti_art = JyotiLamp(104, "ek-jyoti-art", halign=Gtk.Align.END,
                                    valign=Gtk.Align.START)
         stage.add_overlay(self.jyoti_art)
         c.append(stage)

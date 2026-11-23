@@ -25,6 +25,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 NOW = int(time.time() * 1000)
 MIN, HOUR, DAY = 60_000, 3_600_000, 86_400_000
 PHONE_KEY = "demo-phone"
+JYOTI_LEVEL = os.environ.get("DEMO_JYOTI", "on")   # off, on or high: Jyoti's level in the shots
 
 DEVICES = [{
     "key": PHONE_KEY, "name": "Pixel 8", "grants": [], "pairedAt": NOW - 40 * DAY, "lastSeen": NOW,
@@ -92,8 +93,8 @@ ENTRIES[-1]["undo"] = {"kind": "jyoti.set", "data": {}}
 
 STATE = {
     "status": {"name": "vayu", "battery": {"percent": 82, "charging": True, "plugged": True}, "cpu": 14,
-               "temperature": 46, "uptime": 18_000, "jyoti": "on", "waiting": 0, "locked": False, "firewall": None},
-    "jyoti": {"level": "on", "since": NOW - 40 * MIN, "until": None, "lidHold": True},
+               "temperature": 46, "uptime": 18_000, "jyoti": JYOTI_LEVEL, "waiting": 0, "locked": False, "firewall": None},
+    "jyoti": {"level": JYOTI_LEVEL, "since": NOW - 40 * MIN, "until": None, "lidHold": True},
     "appearance": {"mode": "dark", "settable": True, "why": None},
 }
 PHONE = {

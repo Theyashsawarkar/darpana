@@ -94,24 +94,17 @@
   border: 1px solid alpha(white, 0.14); color: @subtext1;
 }
 .plugin-darpana .ek-tile-label { font-size: 12.5px; font-weight: 700; color: @subtext1; }
-/* The lamp, the tile's focus (as on the phone): 120 px at the top right. */
-.plugin-darpana .ek-jyoti-art { margin-right: 4px; }
+/* The flame, the tile's focus (as on the phone): 104 px at the top right. It's
+   bright enough on its own, so the card gets a flat tint, never a glow. */
+.plugin-darpana .ek-jyoti-art { margin: 6px 12px 0 0; }
 .plugin-darpana .ek-jyoti-label { color: #cbbfd8; }
 .plugin-darpana .ek-jyoti.lv-on .ek-jyoti-label { color: @jyoti-akhanda; }
 .plugin-darpana .ek-jyoti.lv-high .ek-jyoti-label { color: @jyoti-nanda; }
-.plugin-darpana .ek-jyoti.lv-off {
-  background-image: radial-gradient(circle at 100% 0%, alpha(#a091be, 0.22), transparent 62%);
-}
+.plugin-darpana .ek-jyoti.lv-off { background-color: alpha(#a091be, 0.06); }
 
 .plugin-darpana .ek-jyoti { transition: all 300ms ease; }
-.plugin-darpana .ek-jyoti.lv-on {
-  background-image: radial-gradient(circle at 100% 0%, alpha(@jyoti-akhanda, 0.30), transparent 65%);
-  border-color: alpha(@jyoti-akhanda, 0.45);
-}
-.plugin-darpana .ek-jyoti.lv-high {
-  background-image: radial-gradient(circle at 90% 110%, alpha(@jyoti-nanda, 0.42), transparent 65%);
-  border-color: alpha(@jyoti-nanda, 0.6); box-shadow: 0 14px 30px -18px alpha(@jyoti-nanda, 0.8);
-}
+.plugin-darpana .ek-jyoti.lv-on { background-color: alpha(@jyoti-akhanda, 0.10); border-color: alpha(@jyoti-akhanda, 0.45); }
+.plugin-darpana .ek-jyoti.lv-high { background-color: alpha(@jyoti-nanda, 0.12); border-color: alpha(@jyoti-nanda, 0.6); }
 .plugin-darpana .ek-jyoti.lv-on .ek-big, .plugin-darpana .ek-jyoti.lv-on .ek-tile-label { color: @jyoti-akhanda; }
 .plugin-darpana .ek-jyoti.lv-high .ek-big, .plugin-darpana .ek-jyoti.lv-high .ek-tile-label { color: @jyoti-nanda; }
 

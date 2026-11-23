@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **Jyoti's flame** (Home): the flame alone, in three layers with flying sparks: at dusk for Śānta (its colour drained to lilacs), blue for Akhaṇḍa, bright red for Nandādīpa. Vectors, drawn at the size shown, so it's sharp; the same flame as ekatva's phone app (`assets/jyoti/`, written by ekatva's `scripts/jyoti-art.mjs`). The card's soft glow became a flat tint.
+- The demo service takes Jyoti's level from `DEMO_JYOTI` (off, on, high), for screenshots.
 - **From anywhere**, on Devices: whether phones can reach this laptop from any network through ekatva's tunnel, coloured by what it means (green Open, yellow Opening, red Off when `cloudflared` isn't installed), with the tunnel's address. Needs ekatva's `admin.link.watch`.
 - **Connect a phone** (was Pair a phone, `Space a p`): the same QR code pairs a new phone and reconnects a paired one, from any network; it is redrawn by itself when the tunnel's address changes while it's shown. Connected phones say *same Wi-Fi* or *through the tunnel*.
 
