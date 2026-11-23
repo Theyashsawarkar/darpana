@@ -44,7 +44,7 @@ from .widgets import G, L, avatar, button, clear
 # keybind: Vyom/darpana leader:normal | Space g d | Go to the paired devices and their permissions
 # keybind: Vyom/darpana leader:normal | Space y c | Copy the phone's clipboard to this laptop's
 # keybind: Vyom/darpana leader:normal | Space y p | Copy this laptop's clipboard to the phone
-# keybind: Vyom/darpana leader:normal | Space a p | Add a phone (shows the pairing code; works from any network)
+# keybind: Vyom/darpana leader:normal | Space a p | Add a phone (shows the connect code: pairs a new phone, reconnects a paired one, any network)
 # keybind: Vyom/darpana leader:normal | Space a f | Add a file to the phone (send it to Download/ekatva)
 # keybind: Vyom/darpana leader:normal | Space s | Search messages or calls by name or number
 # keybind: Vyom/darpana leader:normal | Space r | Reload what this place shows
@@ -83,6 +83,7 @@ class Plugin(Base):
         self.devices, self.laptop, self.phone, self.jyoti = [], None, None, None
         self.look_laptop, self.look_phone, self.call = None, None, None
         self.threads, self.call_log, self.caps = None, None, None
+        self.route = None   # the tunnel and LAN addresses (admin.link.watch)
         self.phone_clip = None
         self.threads_at = self.calls_at = 0
         self.calls_problem = None
@@ -284,7 +285,12 @@ class Plugin(Base):
             self.rpc.subscribe("admin.devices.watch", self.on_devices),
             self.rpc.subscribe("jyoti.watch", self.on_jyoti),
             self.rpc.subscribe("admin.calls.watch", self.on_call),
+            self.rpc.subscribe("admin.link.watch", self.on_route),
         ]
+
+    def on_route(self, route):
+        self.route = route
+        self.refresh_views()
 
     def on_phone(self, st):
         self.phone = st

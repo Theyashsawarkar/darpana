@@ -36,7 +36,7 @@ LEADER = [
     B(" gd", "go:devices", "Go to the paired devices and their permissions"),
     B(" yc", "clip:copy", "Copy the phone's clipboard to this laptop's"),
     B(" yp", "clip:send", "Copy this laptop's clipboard to the phone"),
-    B(" ap", "pair", "Add a phone (shows the pairing code; works from any network)"),
+    B(" ap", "pair", "Add a phone (shows the connect code: pairs a new phone, reconnects a paired one, any network)"),
     B(" af", "send", "Add a file to the phone (send it to Download/ekatva)"),
     B(" s", "search", "Search messages or calls by name or number"),
     B(" r", "refresh", "Reload what this place shows"),

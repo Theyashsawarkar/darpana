@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- **From anywhere**, on Devices: whether phones can reach this laptop from any network through ekatva's tunnel, coloured by what it means (green Open, yellow Opening, red Off when `cloudflared` isn't installed), with the tunnel's address. Needs ekatva's `admin.link.watch`.
+- **Connect a phone** (was Pair a phone, `Space a p`): the same QR code pairs a new phone and reconnects a paired one, from any network; it is redrawn by itself when the tunnel's address changes while it's shown. Connected phones say *same Wi-Fi* or *through the tunnel*.
+
 ## v0.1.0 -- 2026-11-17
 
 - **Darpaṇa** (दर्पण, the mirror): the name (it was ekatva-vyom), its logo (a hand mirror) and its verse (Kaṭha Upaniṣad 2.3.5), on its screen (Devices), README and website. `vyom darpana`; config `[plugin.darpana]`.

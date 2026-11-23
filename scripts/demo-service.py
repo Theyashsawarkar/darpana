@@ -114,6 +114,9 @@ def answer(path, inp):
         return STATE["appearance"]
     if path == "admin.capabilities":
         return CAPS
+    if path == "admin.pair.start":   # a made-up code: no real key or token
+        return {"uri": "ekatva://pair?v=1&k=demo-laptop-key&t=demo-token&n=vayu&lan=192.168.1.7:47100&url="
+                + TUNNEL, "expires": int(time.time() * 1000) + 2 * MIN, "lan": ROUTE["lan"], "url": TUNNEL}
     if path == "admin.log.check":
         return [{"host": "self", "name": "vayu", "seq": ENTRIES[-1]["seq"], "problem": None},
                 {"host": PHONE_KEY, "name": "Pixel 8", "seq": 640, "problem": None}]
@@ -135,10 +138,16 @@ def answer(path, inp):
     return {"value": None, "summary": "Done (demo)"}
 
 
+TUNNEL = "wss://quiet-river-28.trycloudflare.com"   # made up
+ROUTE = {"url": TUNNEL, "lan": ["192.168.1.7:47100"],
+         "tunnel": {"kind": "cloudflared", "state": "up", "url": TUNNEL, "always": True,
+                    "since": NOW - 3 * HOUR, "problem": None}}
+
+
 def subscription(path):
     """The first (and, in the demo, only) value a watch sends."""
     return {"admin.devices.watch": DEVICES, "jyoti.watch": STATE["jyoti"], "admin.calls.watch": None,
-            "admin.pair.pending": None}.get(path)
+            "admin.pair.pending": None, "admin.link.watch": ROUTE}.get(path)
 
 
 # ---------------------------------------------------------------- WebSocket

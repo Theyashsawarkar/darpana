@@ -75,7 +75,7 @@ Vyom's vim keys work too: `?` and `Space ?` list every key, `Space Space` is the
 | `Space g d` | Go to the paired devices and their permissions |
 | `Space y c` | Copy the phone's clipboard to this laptop's |
 | `Space y p` | Copy this laptop's clipboard to the phone |
-| `Space a p` | Add a phone (shows the pairing code; works from any network) |
+| `Space a p` | Add a phone (shows the connect code: pairs a new phone, reconnects a paired one, any network) |
 | `Space a f` | Add a file to the phone (send it to Download/ekatva) |
 | `Space s` | Search messages or calls by name or number |
 | `Space r` | Reload what this place shows |

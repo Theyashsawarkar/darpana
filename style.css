@@ -62,6 +62,18 @@
   background: alpha(white, 0.05); border: 1px solid alpha(white, 0.07);
 }
 .plugin-darpana .ek-pill-red { color: @red; border-color: alpha(@red, 0.4); background: alpha(@red, 0.10); }
+.plugin-darpana .ek-pill-green { color: @green; border-color: alpha(@green, 0.4); background: alpha(@green, 0.10); }
+.plugin-darpana .ek-pill-yellow { color: @yellow; border-color: alpha(@yellow, 0.4); background: alpha(@yellow, 0.10); }
+.plugin-darpana .ek-dot.wait { background: @yellow; box-shadow: 0 0 0 3px alpha(@yellow, 0.18); }
+.plugin-darpana .ek-dot.bad { background: @red; box-shadow: 0 0 0 3px alpha(@red, 0.18); }
+/* From anywhere: the tunnel's state, above "Connect a phone". */
+.plugin-darpana .ek-reach {
+  padding: 10px 12px; border-radius: 14px; margin-bottom: 4px;
+  background: alpha(white, 0.03); border: 1px solid alpha(white, 0.07);
+}
+.plugin-darpana .ek-reach-url { color: @overlay1; margin-top: 2px; }
+/* A line under a title that carries meaning (connected, any network): its colour wins over the grey. */
+.plugin-darpana .ek-row-s.t-green { color: @green; } .plugin-darpana .ek-row-s.t-yellow { color: @yellow; }
 
 .plugin-darpana button.ek-act {
   min-width: 58px; min-height: 62px; padding: 0 2px; border-radius: 16px;

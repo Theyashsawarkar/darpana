@@ -18,7 +18,7 @@ VERSE = ("यथादर्शे तथात्मनि यथा स्व�
 
 
 class Devices(View):
-    hints = [Hint("Enter", "toggle"), Hint("Space a p", "pair a phone")]
+    hints = [Hint("Enter", "toggle"), Hint("Space a p", "connect a phone (QR)")]
 
     def build(self):
         self.sel = None
@@ -37,7 +37,10 @@ class Devices(View):
         self.detail = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         left.append(self.detail)
         left.append(Gtk.Box(vexpand=True))
-        left.append(button("Pair a phone", lambda: self.pair(True), "soft", "plus"))
+        self.reach = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+        self.reach.add_css_class("ek-reach")
+        left.append(self.reach)
+        left.append(button("Connect a phone", lambda: self.pair(True), "soft", "plus"))
         verse = L(VERSE, "ek-verse", justify=Gtk.Justification.CENTER, wrap=True)
         left.append(verse)
         left.append(L("Kaṭha Upaniṣad 2.3.5", "ek-verse-src"))
@@ -56,9 +59,16 @@ class Devices(View):
     # ------------------------------------------------------------ drawing
     def update(self):
         p = self.p
-        if not self.changed("all", p.devices, p.caps, self.sel, self.pairing, self.pending, self.offer,
-                            getattr(self, "qr", None), self.preset):
+        route = p.route or {}
+        # The tunnel came back under a new URL while its code is up: draw a new code.
+        if (self.pairing and self.offer and not self.pending and route.get("url")
+                and self.offer.get("url") != route["url"]):
+            self.pair(True)
             return
+        if not self.changed("all", p.devices, p.caps, self.sel, self.pairing, self.pending, self.offer,
+                            getattr(self, "qr", None), self.preset, route.get("tunnel")):
+            return
+        self.draw_reach(route.get("tunnel"))
         clear(self.devs)
         for d in p.devices:
             b = Gtk.Button()
@@ -70,7 +80,7 @@ class Devices(View):
             box.append(ph)
             text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, hexpand=True, valign=Gtk.Align.CENTER)
             text.append(ellipsized(d["name"].replace(" by Nothing", ""), "ek-row-t"))
-            sub = ("Connected · " + ("direct" if d.get("via") == "lan" else "through the internet")
+            sub = ("Connected · " + ("same Wi-Fi" if d.get("via") == "lan" else "through the tunnel")
                    if d.get("online") else f"Last seen {seen(d.get('lastSeen'))}")
             s = ellipsized(sub, "ek-row-s")
             if d.get("online"):
@@ -81,7 +91,7 @@ class Devices(View):
             b.connect("clicked", lambda _b, k=d["key"]: self.pick(k))
             self.devs.append(b)
         if not p.devices:
-            self.devs.append(L("No phone yet. Pair one: it takes a QR code and four emoji.", "ek-empty",
+            self.devs.append(L("No phone yet. Connect one: it takes a QR code and four emoji.", "ek-empty",
                                xalign=0, wrap=True))
         clear(self.detail)
         d = self.device()
@@ -103,6 +113,40 @@ class Devices(View):
         else:
             self.right.append(card(L("Pair a phone to choose what it may do here.", "ek-empty"),
                                    cls="ek-list-card"))
+
+    def draw_reach(self, t):
+        """From anywhere: the tunnel's state, coloured by what it means."""
+        clear(self.reach)
+        head = Gtk.Box(spacing=8)
+        dot = Gtk.Box(valign=Gtk.Align.CENTER, halign=Gtk.Align.CENTER)
+        dot.add_css_class("ek-dot")
+        head.append(dot)
+        head.append(L("From anywhere", "ek-row-t", xalign=0, hexpand=True))
+        state = (t or {}).get("state")
+        kind = (t or {}).get("kind", "cloudflared")
+        if state == "up":
+            pill, tone, sub = "Open", "green", f"Phones reach this laptop from any network, through {kind}"
+            dot.add_css_class("ok")
+        elif state == "starting":
+            pill, tone, sub = "Opening", "yellow", (t.get("problem") or "Opening the tunnel") + "…"
+            dot.add_css_class("wait")
+        elif state == "missing":
+            pill, tone, sub = "Off", "red", f"{t.get('problem')}: phones connect on the same Wi-Fi only"
+            dot.add_css_class("bad")
+        elif kind == "none":
+            pill, tone, sub = "Off", "red", 'Turned off ([tunnel] kind = "none")'
+            dot.add_css_class("bad")
+        elif t is None:
+            pill, tone, sub = "…", "", "Asking the service"
+        else:
+            pill, tone, sub = ("Off", "", "Opens when a phone is paired" if t.get("always")
+                               else "Opens when a phone away asks for it")
+        head.append(L(pill, "ek-pill", *([f"ek-pill-{tone}"] if tone else [])))
+        self.reach.append(head)
+        self.reach.append(L(sub, "ek-row-s", xalign=0, wrap=True))
+        if state == "up" and t.get("url"):
+            host = t["url"].removeprefix("wss://")
+            self.reach.append(ellipsized(host, "ek-mono", "ek-reach-url"))
 
     def pick(self, key):
         self.sel = key
@@ -203,14 +247,14 @@ class Devices(View):
             return False
         if self.offer and hasattr(self, "left_lbl"):
             left = max(0, int(self.offer["expires"] / 1000 - time.time()))
-            self.left_lbl.set_label(f"Works once, for {left // 60}:{left % 60:02d} more" if left
+            self.left_lbl.set_label(f"Pairing works once, for {left // 60}:{left % 60:02d} more" if left
                                     else "Expired: press New code")
         return True
 
     def pair_card(self):
         c = card(cls="ek-pair", spacing=10)
         head = Gtk.Box(spacing=8)
-        head.append(L("Pair a phone", "ek-pair-t", xalign=0, hexpand=True))
+        head.append(L("Connect a phone", "ek-pair-t", xalign=0, hexpand=True))
         head.append(button("Close", lambda: self.pair(False), "soft"))
         c.append(head)
         req = self.pending[0] if self.pending else None
@@ -246,18 +290,23 @@ class Devices(View):
             frame.append(pic)
             row.append(frame)
         else:
-            row.append(L("Opening a tunnel…" if not self.offer else "Couldn't draw the code (qrencode)",
+            row.append(L("Opening the tunnel…" if not self.offer else "Couldn't draw the code (qrencode)",
                          "ek-empty"))
         text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6, valign=Gtk.Align.CENTER, hexpand=True)
         text.append(L("Scan this with ekatva on the phone.", "ek-row-t", xalign=0, wrap=True))
+        text.append(L("A new phone pairs. A paired phone just connects, and keeps the way back.",
+                      "ek-row-s", xalign=0, wrap=True))
         self.left_lbl = L("", "ek-row-s", xalign=0)
         text.append(self.left_lbl)
         self.tick()
         if self.offer:
-            text.append(L("Works from any network (mobile data too)" if self.offer.get("url")
-                          else "Same Wi-Fi only", "ek-row-s", xalign=0))
+            anywhere = bool(self.offer.get("url"))
+            text.append(L("● Works from any network, mobile data too" if anywhere
+                          else "● Same Wi-Fi only: the tunnel isn't open", "ek-row-s",
+                          "t-green" if anywhere else "t-yellow", xalign=0, wrap=True))
             text.append(button("New code", lambda: self.pair(True), "soft"))
-        text.append(L("Then check the phone shows the same four emoji as here.", "ek-row-s", xalign=0, wrap=True))
+        text.append(L("Pairing a new phone: check it shows the same four emoji as here.",
+                      "ek-row-s", xalign=0, wrap=True))
         row.append(text)
         c.append(row)
         return c
